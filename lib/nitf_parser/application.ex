@@ -11,7 +11,8 @@ defmodule NitfParser.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Starts a worker by calling: NitfParser.Worker.start_link(arg1, arg2, arg3)
-      # worker(NitfParser.Worker, [arg1, arg2, arg3]),
+       worker(NitfParser.Pool, []),
+       worker(NitfParser.Unnamed, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

@@ -18,9 +18,9 @@ defmodule NitfParser.Worker do
     {:ok, []}
   end
 
-  def handle_call({:parse, file}, _from, _state) do
+  def handle_call({:parse, file}, _from, state) do
     nitf_struct = Parser2.parse(file)
-    {:reply, nitf_struct, []}
+    {:reply, nitf_struct, state}
   end
 
 end
