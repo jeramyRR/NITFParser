@@ -1,4 +1,4 @@
-defmodule NitfParser.Parser2 do
+defmodule NitfParser.FileParser do
   alias NitfParser.Nitf
 
   @moduledoc """
@@ -71,7 +71,7 @@ defmodule NitfParser.Parser2 do
 
      ## Examples:
 
-     iex> NitfParser.Parser2.parse_image_segments({ %NitfParser.Nitf{ numi: "001"}, "0004990001048576" })
+     iex> NitfParser.FileParser.parse_image_segments({ %NitfParser.Nitf{ numi: "001"}, "0004990001048576" })
      %NitfParser.Nitf{ numi: "001", img_segs: [ [ LISH001: "000499", LI001: "0001048576" ] ]}
 
     """

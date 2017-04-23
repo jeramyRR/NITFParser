@@ -1,4 +1,4 @@
-defmodule NitfParser.Pool do
+defmodule NitfParser.PoolServer do
   use GenServer
 
   @name :nitf_worker_pool
@@ -43,12 +43,12 @@ defmodule NitfParser.Pool do
   end
 
   def handle_cast({:checkin, worker}, state) do
-      {:noreply, [ worker | state ]}
+    {:noreply, [ worker | state ]}
   end
 
   def handle_info({:init_workers, num_workers}, _state) do
     new_state = Enum.map(1..num_workers, fn _ ->
-      {:ok, pid} = NitfParser.Worker.start_link
+      {:ok, pid} = NitfParser.PoolWorkerSupervisor.start_worker
       pid
     end)
     {:noreply, new_state }

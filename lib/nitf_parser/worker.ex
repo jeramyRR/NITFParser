@@ -1,5 +1,5 @@
 defmodule NitfParser.Worker do
-  alias NitfParser.Parser2
+  alias NitfParser.FileParser
 
   ### Client API
 
@@ -19,7 +19,7 @@ defmodule NitfParser.Worker do
   end
 
   def handle_call({:parse, file}, _from, state) do
-    nitf_struct = Parser2.parse(file)
+    nitf_struct = FileParser.parse(file)
     {:reply, nitf_struct, state}
   end
 

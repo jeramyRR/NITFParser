@@ -1,15 +1,15 @@
-defmodule NitfParser.Parser2Test do
+defmodule NitfParser.FileParserTest do
   use ExUnit.Case
-  doctest NitfParser.Parser2
+  doctest NitfParser.FileParser
 
-  alias NitfParser.Parser2
+  alias NitfParser.FileParser
   alias NitfParser.Nitf
 
-  @nitf_path "/Users/jeramy/Downloads/i_3001a.ntf"
+  @nitf_path "/Users/jeramy/Documents/nitfs/i_3001a.ntf"
   @not_nitf_path "/Users/jeramy/Downloads/i_dont_exist.pdf"
 
   setup_all do
-    nitf_struct = Parser2.parse(@nitf_path)
+    nitf_struct = FileParser.parse(@nitf_path)
     {:ok, [nitf_struct: nitf_struct]}
   end
 
@@ -43,7 +43,7 @@ defmodule NitfParser.Parser2Test do
   test "a non-nitf file shall raise an error" do
     assert_raise(RuntimeError,
                 "Unable to open file due to enoent",
-                fn -> Parser2.parse(@not_nitf_path) end)
+                fn -> FileParser.parse(@not_nitf_path) end)
   end
 
 
